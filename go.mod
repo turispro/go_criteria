@@ -1,4 +1,4 @@
-module go_criteria
+module github.com/turispro/go_criteria
 
 go 1.19
 
