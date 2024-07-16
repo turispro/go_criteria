@@ -204,7 +204,7 @@ func mappedField(fildMap map[string]string, fieldToMap string) (field string) {
 }
 func extractFieldOperatorFromField(field string) (string, string, error) {
 
-	r, _ := regexp.Compile(`([a-z_]+)\[([a-z=]+)\]`)
+	r, _ := regexp.Compile(`([a-zA-Z_]+)\[([a-z=]+)\]`)
 	op := r.FindStringSubmatch(field)
 	if len(op) < 3 {
 		return "", "", errors.New("operator not found")
