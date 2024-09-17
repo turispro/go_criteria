@@ -180,7 +180,7 @@ func (c *Criteria) ToBson() (bson.D, *options.FindOptions) {
 			field = f.Field
 		}
 		if f.Operator == "like" {
-			filter = append(filter, bson.E{field, fmt.Sprintf("/%s/", value)})
+			filter = append(filter, bson.E{field, bson.M{"$regex": fmt.Sprintf(".*%s.*", value), "$options": "i"}})
 		} else {
 			operator := getMongoOperator(f.Operator)
 			filter = append(filter, bson.E{field, bson.D{{operator, value}}})
